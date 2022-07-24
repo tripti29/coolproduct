@@ -18,10 +18,5 @@ pipeline {
                 	}
             	}
         	}
-            stage('Test') {
-                steps {
-                    echo 'Hello World ...'
-                }
-            }
         }
     }
