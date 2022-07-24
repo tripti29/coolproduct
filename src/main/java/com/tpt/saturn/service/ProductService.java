@@ -27,12 +27,12 @@ public class ProductService {
 		try {
 			//map createProductRequest to product
 			Product product = createProductRequestToProduct(createProductRequest);
-			savedProduct = productRepository.save(product);
+			return productRepository.save(product).getName();
 		} catch(Exception e) {
 			log.error("Failed to save product ", e);
 			throw e;
 		}
-		return savedProduct.getName();
+		
 	}
 	
 	public List<GetProductResponse> findProduct(Long id, String name, String category) throws Exception {

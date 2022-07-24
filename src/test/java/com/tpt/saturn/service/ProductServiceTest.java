@@ -2,8 +2,6 @@ package com.tpt.saturn.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
@@ -40,11 +38,16 @@ public class ProductServiceTest extends AbstractTest{
 		testProduct.setCategory("testcategory");
 		testProduct.setAmount(100);
 		
-		when(productRepository.save(any())).thenReturn(testProduct);
+		Product savedTestProduct = new Product();
+		testProduct.setName("testname");
+		testProduct.setCategory("testcategory");
+		testProduct.setAmount(100);
+		
+		when(productRepository.save(any())).thenReturn(savedTestProduct);
 		
 		String productName = productService.createProduct(testProduct);
 		
-		assertEquals(testProduct.getName(), productName);
+		assertEquals(savedTestProduct.getName(), productName);
 		
 	}
 	
