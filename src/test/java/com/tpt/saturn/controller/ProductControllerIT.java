@@ -1,6 +1,7 @@
 package com.tpt.saturn.controller;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.net.URI;
@@ -44,7 +45,7 @@ public class ProductControllerIT {
 	
 	@Test
 	public void test_CreateProduct_Success() throws Exception {
-		URI uri = new URI("http://localhost:" + port + "/product");
+		URI uri = new URI("http://localhost:" + port + "/products");
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		
@@ -57,78 +58,54 @@ public class ProductControllerIT {
 		
 		ResponseEntity<String> response = this.restTemplate.postForEntity(uri, entity, String.class);
 		
+		assertEquals(HttpStatus.CREATED, response.getStatusCode());
 		assertEquals(testProduct.getName(), response.getBody());
 	}
 	
-	//Tests for FindProduct HTTP.Get
+	//Tests for FindProducts HTTP.Get
 	
 	@Test
-	public void test_FindProduct_All_Success() throws Exception {
-		URI uri = new URI("http://localhost:" + port + "/product");
+	public void test_FindProducts_All_Success() throws Exception {
+		URI uri = new URI("http://localhost:" + port + "/products");
 
 		ResponseEntity<GetProductResponse[]> responseEntity = restTemplate.getForEntity(uri, GetProductResponse[].class);
 		GetProductResponse[] responseList = responseEntity.getBody();
 	    
 		List<GetProductResponse> productListJsonResponse = Arrays.asList(responseList);
 		
+		assertEquals(HttpStatus.ACCEPTED, responseEntity.getStatusCode());
 		assertFalse(productListJsonResponse.isEmpty());
-		
-		GetProductResponse productJsonResponse = productListJsonResponse.get(0);
-		
-		assertEquals(HttpStatus.FOUND, responseEntity.getStatusCode());
 	}
 	
 	@Test
-	public void test_FindProduct_ById_Success() throws Exception {
-		URI uri = new URI("http://localhost:" + port + "/product?id=1");
+	public void test_FindProducts_ByName_Success() throws Exception {
+		URI uri = new URI("http://localhost:" + port + "/products?name=product1");
 
 		ResponseEntity<GetProductResponse[]> responseEntity = restTemplate.getForEntity(uri, GetProductResponse[].class);
 		GetProductResponse[] responseList = responseEntity.getBody();
 	    
 		List<GetProductResponse> productListJsonResponse = Arrays.asList(responseList);
 		
+		assertEquals(HttpStatus.ACCEPTED, responseEntity.getStatusCode());
 		assertFalse(productListJsonResponse.isEmpty());
-		
-		GetProductResponse productJsonResponse = productListJsonResponse.get(0);
-		
-		assertEquals(HttpStatus.FOUND, responseEntity.getStatusCode());
 	}
 	
 	@Test
-	public void test_FindProduct_ByName_Success() throws Exception {
-		URI uri = new URI("http://localhost:" + port + "/product?name=product1");
+	public void test_FindProducts_ByCategory_Success() throws Exception {
+		URI uri = new URI("http://localhost:" + port + "/products?category=category2");
 
 		ResponseEntity<GetProductResponse[]> responseEntity = restTemplate.getForEntity(uri, GetProductResponse[].class);
 		GetProductResponse[] responseList = responseEntity.getBody();
 	    
 		List<GetProductResponse> productListJsonResponse = Arrays.asList(responseList);
 		
+		assertEquals(HttpStatus.ACCEPTED, responseEntity.getStatusCode());
 		assertFalse(productListJsonResponse.isEmpty());
-		
-		GetProductResponse productJsonResponse = productListJsonResponse.get(0);
-		
-		assertEquals(HttpStatus.FOUND, responseEntity.getStatusCode());
 	}
 	
 	@Test
-	public void test_FindProduct_ByCategory_Success() throws Exception {
-		URI uri = new URI("http://localhost:" + port + "/product?category=category2");
-
-		ResponseEntity<GetProductResponse[]> responseEntity = restTemplate.getForEntity(uri, GetProductResponse[].class);
-		GetProductResponse[] responseList = responseEntity.getBody();
-	    
-		List<GetProductResponse> productListJsonResponse = Arrays.asList(responseList);
-		
-		assertFalse(productListJsonResponse.isEmpty());
-		
-		GetProductResponse productJsonResponse = productListJsonResponse.get(0);
-		
-		assertEquals(HttpStatus.FOUND, responseEntity.getStatusCode());
-	}
-	
-	@Test
-	public void test_FindProduct_EmptyParameters_Success() throws Exception {
-		URI uri = new URI("http://localhost:" + port + "/product?id=&name=&category=");
+	public void test_FindProducts_EmptyParameters_Success() throws Exception {
+		URI uri = new URI("http://localhost:" + port + "/products?name=&category=");
 
 		ResponseEntity<ErrorResult> responseEntity = restTemplate.getForEntity(uri, ErrorResult.class);
 		ErrorResult response = responseEntity.getBody();
@@ -138,8 +115,32 @@ public class ProductControllerIT {
 	}
 	
 	@Test
+	public void test_FindProducts_NotFound() throws Exception {
+		URI uri = new URI("http://localhost:" + port + "/products?name=testName");
+
+		ResponseEntity<ErrorResult> responseEntity = restTemplate.getForEntity(uri, ErrorResult.class);
+		ErrorResult response = responseEntity.getBody();
+		
+		assertEquals(HttpStatus.NOT_FOUND, responseEntity.getStatusCode());
+		assertEquals("Sorry we cannot find requested data", response.getErrorMessage());
+	}
+	
+	//Tests for FindProduct HTTP.Get
+	
+	@Test
+	public void test_FindProduct_ById_Success() throws Exception {
+		URI uri = new URI("http://localhost:" + port + "/products/1");
+
+		ResponseEntity<GetProductResponse> responseEntity = restTemplate.getForEntity(uri, GetProductResponse.class);
+		GetProductResponse response = responseEntity.getBody();
+		
+		assertEquals(HttpStatus.ACCEPTED, responseEntity.getStatusCode());
+		assertNotNull(response);
+	}
+	
+	@Test
 	public void test_FindProduct_NotFound() throws Exception {
-		URI uri = new URI("http://localhost:" + port + "/product?id=5");
+		URI uri = new URI("http://localhost:" + port + "/products/5");
 
 		ResponseEntity<ErrorResult> responseEntity = restTemplate.getForEntity(uri, ErrorResult.class);
 		ErrorResult response = responseEntity.getBody();

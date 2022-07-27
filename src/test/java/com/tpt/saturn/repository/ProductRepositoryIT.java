@@ -9,13 +9,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.tpt.saturn.controller.AbstractTest;
 import com.tpt.saturn.domain.Product;
 import com.tpt.saturn.repository.filter.ProductFilter;
 
@@ -50,12 +48,12 @@ public class ProductRepositoryIT {
 
     @Test
     public void test_find_product_by_filter() {
-    	ProductFilter productFilter = ProductFilter.builder().id(1L).build();
+    	ProductFilter productFilter = ProductFilter.builder().name("product1").build();
     	
     	List<Product> foundProducts = productRepository.findAll(productFilter);
         
     	assertThat(foundProducts).hasSize(1);
-    	assertEquals(1L, foundProducts.get(0).getId());
+    	assertEquals(productFilter.getName(), foundProducts.get(0).getName());
     }
 
 

@@ -16,17 +16,11 @@ import lombok.Data;
 @Builder
 public class ProductFilter implements Specification<Product>{
 	
-	private static final long serialVersionUID = 1L;
-	
-	private Long id;
 	private String category;
 	private String name;
 
 	@Override
 	public Predicate toPredicate(Root<Product> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
-		if(this.getId() != null) {
-			return criteriaBuilder.equal(root.get("id"), this.getId());
-		}
 		if(this.getCategory() != null) {
 			return criteriaBuilder.equal(root.get("category"), this.getCategory());
 		}
@@ -35,6 +29,4 @@ public class ProductFilter implements Specification<Product>{
 		}
 		return null;
 	}
-
-	
 }

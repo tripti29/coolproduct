@@ -8,13 +8,19 @@ pipeline {
             	}
         	}
         	stage('Unit & Integration Tests') {
-            	steps {
+            	steps {//run a gradle task
                 	script {
                     	try {
-                        		sh './gradlew clean test --no-daemon' //run a gradle task
+                        		sh './gradlew clean test --no-daemon' 
                     		} finally {
                         		junit '**/build/test-results/test/*.xml' //make the junit test results available in any case (success & failure)
                     	}
+                	}
+            	}
+            stage('Run') {
+            	steps { //run application
+                	script {
+                    	sh './gradlew bootRun'
                 	}
             	}
         	}
