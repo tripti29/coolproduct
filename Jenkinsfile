@@ -8,7 +8,7 @@ pipeline {
             	}
         	}
         	stage('Unit & Integration Tests') {
-            	steps {//run a gradle task
+            	steps { //run a gradle task
                 	script {
                     	try {
                         		sh './gradlew clean test --no-daemon' 
@@ -18,6 +18,5 @@ pipeline {
                 	    }
             	    }
                }
-            }   
-    	}
+          }   
 }
