@@ -17,6 +17,7 @@ pipeline {
                     	    }
                 	    }
             	    }
+            	}    
              stage('Deploy') {
             	steps { //run gradle task for deployment
                 	script {
@@ -24,5 +25,5 @@ pipeline {
                 	    }
             	    }  
                }
-          }   
+       }   
 }
