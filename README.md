@@ -14,7 +14,7 @@
   <a href="https://github.com/tripti29/coolproduct">
   </a>
 
-<h3 align="center">Spring boot for Cool Products</h3>
+<h3 align="center">Spring boot with gradle</h3>
 
   <p align="center">
     This project will build a simple java application with Spring Boot using gradle.
@@ -47,7 +47,7 @@
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#Running-the-application-in-Eclipse">Running the application in Eclipse</a></li>
-        <li><a href="#Running-the-application-in-Terminal(Ubuntu)">Running the application in Terminal(Ubuntu)</a></li>
+        <li><a href="#Running-the-application-in-Terminal-(Ubuntu)">Running the application in Terminal(Ubuntu)</a></li>
         <li><a href="#Setup-Jenkins-Job">Setup Jenkins Job</a></li>
       </ul>
     </li>
