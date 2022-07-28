@@ -46,9 +46,9 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#Running the application in Eclipse">Running the application in Eclipse</a></li>
-        <li><a href="#Running the application in Terminal(Ubuntu)">Running the application in Terminal(Ubuntu)</a></li>
-        <li><a href="#Setup Jenkins Job">Setup Jenkins Job</a></li>
+        <li><a href="#Running-inEclipse">Running the application in Eclipse</a></li>
+        <li><a href="#Running-Terminal(Ubuntu)">Running the application in Terminal(Ubuntu)</a></li>
+        <li><a href="#Setup-Jenkins-Job">Setup Jenkins Job</a></li>
       </ul>
     </li>
     <li><a href="#Useful-Commands">Useful Commands</a></li>
@@ -74,16 +74,16 @@ possible to query this API using CURL/Postman. The whole code of this applicatio
 
 ### Built With
 
-* [![JDK11]][JDK-url]
-* [![Gradle4+]][Gradle-url]
-* [![Jenkins2]][Jenkins-url]
+* [[JDK11]][JDK-url]
+* [[Gradle4+]][Gradle-url]
+* [[Jenkins2]][Jenkins-url]
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Tools used
-* [![Terminal]]
-* [![Eclipse]][Eclipse-url]
-* [![Jenkins2]][Jenkins-url]
+* [[Terminal]]
+* [[Eclipse]][Eclipse-url]
+* [[Jenkins2]][Jenkins-url]
 
 
 <!-- GETTING STARTED -->
@@ -92,7 +92,7 @@ possible to query this API using CURL/Postman. The whole code of this applicatio
 ### Running the application in Eclipse
 
 1. Download the zip or clone the Git repository.
-	git clone https://github.com/tripti29/coolproduct
+	`git clone https://github.com/tripti29/coolproduct`
 2. Unzip the zip file (if you downloaded one)
 3. Open Command Prompt and Change directory (cd) to folder containing pom.xml
 4. Open Eclipse
@@ -105,19 +105,16 @@ possible to query this API using CURL/Postman. The whole code of this applicatio
 ### Running the application in Terminal(Ubuntu)
 
 1. Download the zip or clone the Git repository.
-	```git clone https://github.com/tripti29/coolproduct
-   ```
+	`git clone https://github.com/tripti29/coolproduct`
 2. Unzip the zip file (if you downloaded one)
 3. Open Command Prompt and Change directory (cd) to folder containing gradlew
 4. Clean test application 
-	```./gradlew clean test
-   ```
+	`./gradlew clean test`
 4. Build application 
-	```./gradlew jar
-   ```
+	`./gradlew jar`
 4. Run application 
-	```./gradlew bootRun
-   ```
+	`./gradlew bootRun`
+
 
 ### Setup Jenkins Job
 
@@ -132,17 +129,17 @@ possible to query this API using CURL/Postman. The whole code of this applicatio
 
 Use following CURL commands
 1. to check application health
-	```curl http://localhost:8085/actuator/health```
+	`curl http://localhost:8085/actuator/health`
 2. to add new product
-	```curl -X POST http://localhost:8085/products -H "Content-Type: application/json" -d '{"name": "samplename", "category": "samplecategory",  "amount":<sampleamount>}'```
+	`curl -X POST http://localhost:8085/products -H "Content-Type: application/json" -d '{"name": "samplename", "category": "samplecategory",  "amount":<sampleamount>}'`
 3. to get all products
-	```curl http://localhost:8085/products```
+	`curl http://localhost:8085/products`
 4. to get products for a category
-	```curl http://localhost:8085/products?category=samplecategory```
+	`curl http://localhost:8085/products?category=samplecategory`
 5. to get products for a name
-	```curl http://localhost:8085/products?name=samplename```
+	`curl http://localhost:8085/products?name=samplename`
 6. to get product for an id
-	```curl http://localhost:8085/products/<idLong>```
+	`curl http://localhost:8085/products/<idLong>`
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
