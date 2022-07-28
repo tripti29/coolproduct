@@ -52,6 +52,7 @@
       </ul>
     </li>
     <li><a href="#Useful-Commands">Useful Commands</a></li>
+    <li><a href="#Upcoming-features">Upcoming features</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
@@ -144,6 +145,15 @@ Use following CURL commands
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
+<!-- ROADMAP -->
+## Upcoming features
+
+- [ ] Refactoring java code with mapstruct
+- [ ] Frontend with ease to use GUI
+
+See the [open issues](https://github.com/tripti29/coolproduct/issues) for a full list of proposed features (and known issues).
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- CONTRIBUTING -->
 ## Contributing
