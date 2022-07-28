@@ -46,8 +46,8 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#Running-inEclipse">Running the application in Eclipse</a></li>
-        <li><a href="#Running-Terminal(Ubuntu)">Running the application in Terminal(Ubuntu)</a></li>
+        <li><a href="#Running-the-application-in-Eclipse">Running the application in Eclipse</a></li>
+        <li><a href="#Running-the-application-in-Terminal(Ubuntu)">Running the application in Terminal(Ubuntu)</a></li>
         <li><a href="#Setup-Jenkins-Job">Setup Jenkins Job</a></li>
       </ul>
     </li>
@@ -81,7 +81,7 @@ possible to query this API using CURL/Postman. The whole code of this applicatio
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Tools used
-* [[Terminal]]
+* [Terminal]
 * [[Eclipse]][Eclipse-url]
 * [[Jenkins2]][Jenkins-url]
 
