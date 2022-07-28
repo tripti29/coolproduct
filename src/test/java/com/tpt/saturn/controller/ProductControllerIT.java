@@ -140,7 +140,7 @@ public class ProductControllerIT {
 	
 	@Test
 	public void test_FindProduct_NotFound() throws Exception {
-		URI uri = new URI("http://localhost:" + port + "/products/5");
+		URI uri = new URI("http://localhost:" + port + "/products/6");
 
 		ResponseEntity<ErrorResult> responseEntity = restTemplate.getForEntity(uri, ErrorResult.class);
 		ErrorResult response = responseEntity.getBody();
