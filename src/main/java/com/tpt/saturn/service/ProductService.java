@@ -77,6 +77,7 @@ public class ProductService {
 	
 	//Implement Mapstruct
 	private Product createProductRequestToProduct(CreateProductRequest createProductRequest) {
+		log.info("mapping to Product object");
 		Product product = new Product();
 		product.setName(createProductRequest.getName());
 		product.setCategory(createProductRequest.getCategory());
